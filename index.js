@@ -14,6 +14,14 @@ app.get("/",(req,res)=>{
     res.render("home");
 });
 
+app.get("/mostrarMensajes",(req,res)=>{
+    res.render("mostrarMensajes");
+});
+
+app.get("/escribirMensaje",(req,res)=>{
+    res.render("escribirMensaje");
+});
+
 //ruta para la carpeta routes
 const mysite = require("./routes/main");
 app.use("/",mysite);
