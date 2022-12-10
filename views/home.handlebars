@@ -1,15 +1,17 @@
 <div>
-    <form name="registro" class="formularioRegistro" action="" method="get" enctype="multipart/form-data">
+    <form name="registro" class="formularioRegistro" action="/" method="POST" enctype="multipart/form-data">
     <p>Regístrate</p>
     <ul>
-        <li><input type="text" name="nombre" class="nombre" placeholder="Nombre"></li>
+        <li><label for="nombre"><input type="text" name="nombre" class="nombre" placeholder="Nombre"></label></li>
         <li><input type="mail" name="correo" class="correo" placeholder="Correo"></li>
         <li><input type="text" name="nick" class="nick" placeholder="Nick"></li>
         <li><input type="password" name="password" class="password" placeholder="Contraseña"></li>
-        <li><input type="password" name="password2" class="password2" placeholder="Confirmar contraseña"></li>
+        <!--<li><input type="password" name="password2" class="password2" placeholder="Confirmar contraseña"></li>-->
+        <li><input type="submit" name="registro" value="Registro"></li>
     </ul>
     <a href="escribirMensaje">Regístrate</a><input type="button" class="botonLogin">
     </form>
+    <a href="escribirMensajes">Loguéate<input type="button" class="botonLogin"></a> 
 
     <form name="login" class="formularioLogin" action="" method="get" enctype="multipart/form-data">
     <p>Login</p>
