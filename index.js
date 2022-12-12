@@ -44,7 +44,7 @@ app.get("/escribirMensaje",(req,res)=>{
 app.post("/",(req,res)=>{
 
         const nombre = req.body.nombre;
-        console.log(req.body.nombre);
+        console.log(req.body);
         const correo = req.body.correo;
         const nick = req.body.nick;
         const password = req.body.password;
