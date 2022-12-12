@@ -26,7 +26,7 @@ conexion.connect(function(err) {
         return;
     }
     console.log('Conectado con el identificador ' + conexion.threadId);
-    });
+});
 
 //get para configurar ruteo
 app.get("/",(req,res)=>{
@@ -41,20 +41,22 @@ app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
 
+
 app.post("/",(req,res)=>{
 
         const nombre = req.body.nombre;
         console.log(req.body);
         const correo = req.body.correo;
         const nick = req.body.nick;
-        const password = req.body.password;
-        conexion.query("INSERT INTO usuario(nombreUsuario,correoUsuario,nickUsuario,passwordUsuario) VALUES ('"+nombre+"','"+correo+"','"+nick+"','"+password+"')"), (error,results)=>{
-            if(error){
-                console.log(error);
-            }else{
-                res.send('ALTA Existosa')
-            }
-        }
+        const password = req.body.password;         
+            try {
+            conexion.query("INSERT INTO usuario(nombreUsuario,correoUsuario,nickUsuario,passwordUsuario) VALUES ('"+nombre+"','"+correo+"','"+nick+"','"+password+"')");
+             console.log("entro");
+            res.redirect('/mostrarMensajes');
+           } catch (error) {
+            console.log(error);
+           }
+           
 });
 //ruta para la carpeta routes
 const mysite = require("./routes/main");
