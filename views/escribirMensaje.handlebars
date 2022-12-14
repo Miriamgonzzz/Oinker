@@ -1,9 +1,8 @@
-<div>
+<div class="cajaEscribirMensaje">
     <form name="mensaje" class="escribirMensaje" action="/escribirMensaje" method="POST" enctype="application/x-www-form-urlencoded">
-    <p>Escribe tu mensaje</p>
     <ul>
-        <li><input type="text" name="titulo" class="titulo" placeholder="Titulo"></li>
-        <li><textarea name="mensaje" rows="10" cols="50" placeholder="Escribe tu mensaje" maxlength="130"></textarea></li>
+        <li class="escribirTitulo"><input type="text" name="titulo" class="titulo" placeholder="Titulo"></li>
+        <li class="escribirMensaje"><textarea name="mensaje" rows="10" cols="50" placeholder="Escribe tu mensaje" maxlength="130"></textarea></li>
     </ul>
      <input type="submit" name="registro" value="Enviar mensaje">
     </form>
