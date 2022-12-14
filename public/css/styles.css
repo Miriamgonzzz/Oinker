@@ -80,3 +80,49 @@
 
   background-color: rgb(212, 132, 176);;
 }
+
+.formularioRegistro{
+  background-color: #0d6efd;
+}
+.formularioRegistro li{
+  list-style: none;
+}
+/*contenido escribirmensaje*/
+
+.mostrarMensaje{
+  text-align: center;
+}
+
+.cajaMensaje{
+
+  border: rgb(219, 59, 147) 5px solid;
+  background-color: #ffffff;
+  align-self: center;
+  margin: 50px 380px 50px 380px;
+  overflow: hidden;
+}
+
+.cajaMensaje li {
+  list-style: none;
+}
+
+.cajaIconos{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cajaBoton {
+  text-align: center;
+}
+
+.tituloOink{
+  color: rgb(239, 24, 142);
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.mensajeOink{
+  padding-top: 20px;
+}
