@@ -34,13 +34,21 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/mostrarMensajes",(req,res)=>{
-    res.render("mostrarMensajes");
+    
+    conexion.query("SELECT tituloMensaje, textoMensaje FROM mensaje", (err, rows, fields)=>{  
+      if (!err) 
+      res.render("mostrarMensajes", {rows});
+      //res.send(rows); 
+      else
+      console.log(err);
+ 
+  })
+
 });
 
 app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
-
 
 app.post("/",(req,res)=>{
 
@@ -57,6 +65,21 @@ app.post("/",(req,res)=>{
             console.log(error);
            }
            
+});
+
+app.post("/escribirMensaje",(req,res)=>{
+
+    const titulo = req.body.titulo;
+    console.log(req.body);
+    const mensaje = req.body.mensaje;       
+        try {
+        conexion.query("INSERT INTO mensaje(tituloMensaje,textoMensaje) VALUES ('"+titulo+"','"+mensaje+"')");
+         console.log("entro");
+        res.redirect('/mostrarMensajes');
+       } catch (error) {
+        console.log(error);
+       }
+       
 });
 //ruta para la carpeta routes
 const mysite = require("./routes/main");
