@@ -50,7 +50,7 @@ app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
 
-app.post("/",(req,res)=>{
+app.post("/formu",(req,res)=>{
 
         const nombre = req.body.nombre;
         console.log(req.body);
@@ -65,6 +65,25 @@ app.post("/",(req,res)=>{
             console.log(error);
            }
            
+});
+
+app.post("/login",(req,res)=>{
+
+    const nick = req.body.nickLogin;
+    const password = req.body.passwordLogin;        
+        try {
+        conexion.query("SELECT * FROM usuario WHERE(nickUsuario= ? and passwordUsuario= ? ",(err,rows,fields)=>{
+            if(!fields)
+            console.log(rows),
+            res.redirect('/mostrarMensajes');
+            else
+            console.log("El usuario no esta registrado");
+        })
+         
+       } catch (error) {
+        console.log(error);
+       }
+       
 });
 
 app.post("/escribirMensaje",(req,res)=>{
