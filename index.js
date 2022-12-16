@@ -50,9 +50,10 @@ app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
 
-app.post("/",(req,res)=>{
+app.post("/formu",(req,res)=>{
 
         const nombre = req.body.nombre;
+<<<<<<< Updated upstream
         console.log(req.body);
         const correo = req.body.correo;
         const nick = req.body.nick;
@@ -80,7 +81,22 @@ app.post("/escribirMensaje",(req,res)=>{
         console.log(error);
        }
        
+=======
+        const correo = req.body.correo;
+        const nick = req.body.nick;
+        const password = req.body.password;
+        conexion.query("INSERT INTO usuario(nombreUsuario,correoUsuario,nickUsuario,passwordUsuario) VALUES ('"+nombre+"','"+correo+"','"+nick+"','"+password+"')"), (error,results)=>{
+            if(error){
+                console.log(error);
+            }else{
+                res.send('ALTA Existosa')
+            }
+        }
+
+        res.redirect("/mostrarMensajes");
+>>>>>>> Stashed changes
 });
+
 //ruta para la carpeta routes
 const mysite = require("./routes/main");
 app.use("/",mysite);
