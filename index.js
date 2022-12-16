@@ -26,7 +26,7 @@ conexion.connect(function(err) {
         return;
     }
     console.log('Conectado con el identificador ' + conexion.threadId);
-    });
+});
 
 //get para configurar ruteo
 app.get("/",(req,res)=>{
@@ -34,17 +34,54 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/mostrarMensajes",(req,res)=>{
-    res.render("mostrarMensajes");
+    
+    conexion.query("SELECT tituloMensaje, textoMensaje FROM mensaje", (err, rows, fields)=>{  
+      if (!err) 
+      res.render("mostrarMensajes", {rows});
+      //res.send(rows); 
+      else
+      console.log(err);
+ 
+  })
+
 });
 
 app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
 
-app.post("/",(req,res)=>{
+app.post("/formu",(req,res)=>{
 
         const nombre = req.body.nombre;
-        console.log(req.body.nombre);
+<<<<<<< Updated upstream
+        console.log(req.body);
+        const correo = req.body.correo;
+        const nick = req.body.nick;
+        const password = req.body.password;         
+            try {
+            conexion.query("INSERT INTO usuario(nombreUsuario,correoUsuario,nickUsuario,passwordUsuario) VALUES ('"+nombre+"','"+correo+"','"+nick+"','"+password+"')");
+             console.log("entro");
+            res.redirect('/mostrarMensajes');
+           } catch (error) {
+            console.log(error);
+           }
+           
+});
+
+app.post("/escribirMensaje",(req,res)=>{
+
+    const titulo = req.body.titulo;
+    console.log(req.body);
+    const mensaje = req.body.mensaje;       
+        try {
+        conexion.query("INSERT INTO mensaje(tituloMensaje,textoMensaje) VALUES ('"+titulo+"','"+mensaje+"')");
+         console.log("entro");
+        res.redirect('/mostrarMensajes');
+       } catch (error) {
+        console.log(error);
+       }
+       
+=======
         const correo = req.body.correo;
         const nick = req.body.nick;
         const password = req.body.password;
@@ -55,7 +92,11 @@ app.post("/",(req,res)=>{
                 res.send('ALTA Existosa')
             }
         }
+
+        res.redirect("/mostrarMensajes");
+>>>>>>> Stashed changes
 });
+
 //ruta para la carpeta routes
 const mysite = require("./routes/main");
 app.use("/",mysite);

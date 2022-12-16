@@ -55,6 +55,8 @@
   --bs-body-bg: rgb(219, 59, 147);
 }
 
+/*contenido main*/
+
 .navbar {
 
   background-color:rgb(219, 59, 147);
@@ -70,13 +72,108 @@
   
 } 
 
-.navbar img {
+.logoImagen {
 
-  width: 250px;
-  height: 200px;
+  width: 150px;
+  height: 125px;
+}
+
+.logoTexto {
+
+  padding-left: 210px;
+
 }
 
 #body {
 
   background-color: rgb(212, 132, 176);;
+}
+
+/*contenido home*/
+
+.cajaFormularioRegistroLogin{
+
+  text-align: center;
+  
+}
+
+.formularioRegistro li{
+  list-style: none;
+  padding-top: 5px;
+  padding-right: 30px;
+}
+
+.formularioLogin li{
+  list-style: none;
+  padding-top: 5px;
+  padding-right: 30px;
+}
+
+p {
+  font-size: 25px;
+  color: rgb(81, 1, 56);
+}
+
+/*contenido mostrarMensajes*/
+
+.mostrarMensaje{
+  text-align: center;
+}
+
+.cajaMensaje{
+
+  border: rgb(219, 59, 147) 5px solid;
+  background-color: #ffffff;
+  align-self: center;
+  margin: 50px 380px 50px 380px;
+  overflow: hidden;
+}
+
+.cajaMensaje li {
+  list-style: none;
+}
+
+.cajaIconos{
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cajaBoton {
+  text-align: center;
+}
+
+.tituloOink{
+  color: rgb(239, 24, 142);
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.mensajeOink{
+  padding-top: 20px;
+}
+
+/*contenido escribirmensaje*/
+
+.cajaEscribirMensaje{
+  text-align: center;
+}
+
+.cajaEscribirMensaje li{
+  list-style: none;
+  padding-right: 30px;
+}
+
+.escribirTitulo{
+  padding-bottom: 10px;
+}
+
+.escribirTitulo input{
+  border: rgb(219, 59, 147) 3px solid;
+}
+
+.escribirMensaje textarea{
+
+  border: rgb(219, 59, 147) 3px solid;
 }

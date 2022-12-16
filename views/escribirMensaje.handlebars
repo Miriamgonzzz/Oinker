@@ -1,11 +1,10 @@
-<div>
-    <form name="mensaje" class="escribirMensaje" action="" method="get" enctype="multipart/form-data">
-    <p>Escribe tu mensaje</p>
+<div class="cajaEscribirMensaje">
+    <form name="mensaje" class="escribirMensaje" action="/escribirMensaje" method="POST" enctype="application/x-www-form-urlencoded">
     <ul>
-        <li><input type="text" name="nick" class="nick" placeholder="Nick"></li>
-        <li><textarea name="escribirMensaje" rows="10" cols="50" placeholder="Escribe tu mensaje"></textarea></li>
+        <li class="escribirTitulo"><input type="text" name="titulo" class="titulo" placeholder="Titulo"></li>
+        <li class="escribirMensaje"><textarea name="mensaje" rows="10" cols="50" placeholder="Escribe tu mensaje" maxlength="130"></textarea></li>
     </ul>
-    <button class="botonEnviarMensaje" onclick="">Enviar mensaje</button>
+     <input type="submit" name="registro" value="Enviar mensaje">
     </form>
 </div>
 

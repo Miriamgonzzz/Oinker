@@ -1,0 +1,19 @@
+<div class="mostrarMensaje">
+    {{#each rows}}
+    <div class="cajaMensaje">
+        <div class="cajaTexto">
+            <li class="tituloOink">{{tituloMensaje}}</li>
+            <li class="mensajeOink">{{textoMensaje}}</li>
+        </div>
+        <div class="cajaIconos">
+           <img src="assets/img/iconoOinkerMensaje.jpg">
+            <img src="assets/img/iconoOinkerReboink.jpg">
+            <img src="assets/img/iconoOinkerLike.jpg"> 
+        </div>
+    
+    </div>
+    {{/each}}
+</div>
+<div class="cajaBoton">
+    <a href="escribirMensaje"><input type="submit" name="registro" class="botonEscribirMensaje" value="Oinkear"></a>
+</div>
