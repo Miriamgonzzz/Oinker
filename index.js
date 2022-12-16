@@ -68,6 +68,25 @@ app.post("/formu",(req,res)=>{
            
 });
 
+app.post("/login",(req,res)=>{
+
+    const nick = req.body.nickLogin;
+    const password = req.body.passwordLogin;        
+        try {
+        conexion.query("SELECT * FROM usuario WHERE(nickUsuario= ? and passwordUsuario= ? ",(err,rows,fields)=>{
+            if(!fields)
+            console.log(rows),
+            res.redirect('/mostrarMensajes');
+            else
+            console.log("El usuario no esta registrado");
+        })
+         
+       } catch (error) {
+        console.log(error);
+       }
+       
+});
+
 app.post("/escribirMensaje",(req,res)=>{
 
     const titulo = req.body.titulo;
