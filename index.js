@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 var mysql = require('mysql');
 const body = require('body-parser')
+const { isEmpty } = require('validator');
 
 //creamos el servidor de aplicaciones
 const app = express();
@@ -58,9 +59,18 @@ app.post("/formu",(req,res)=>{
         const nick = req.body.nick;
         const password = req.body.password;         
             try {
+                if(isEmpty(nombre)||isEmpty(correo)||isEmpty(nick)||isEmpty(password)){
+
+                    res.send('<script>alert("Nisngun campo puede estar vacio");setTimeout(function() {window.location.href = "/";}, 1000);</script>');
+                    return;
+
+                }else{
+
             conexion.query("INSERT INTO usuario(nombreUsuario,correoUsuario,nickUsuario,passwordUsuario) VALUES ('"+nombre+"','"+correo+"','"+nick+"','"+password+"')");
              console.log("entro");
             res.redirect('/mostrarMensajes');
+
+            }
            } catch (error) {
             console.log(error);
            }
@@ -72,13 +82,16 @@ app.post("/login",(req,res)=>{
     const nick = req.body.nickLogin;
     const password = req.body.passwordLogin;        
         try {
-        conexion.query("SELECT * FROM usuario WHERE(nickUsuario= ? and passwordUsuario= ? ",(err,rows,fields)=>{
-            if(!fields)
-            console.log(rows),
+        conexion.query("SELECT * FROM usuario WHERE nickUsuario= ? and passwordUsuario= ? ",[nick,password],(err,results,fields)=>{
+            if (err) throw err;
+
+            if(results.length > 0)
+            console.log({results}),
             res.redirect('/mostrarMensajes');
             else
-            console.log("El usuario no esta registrado");
-        })
+            console.log("El usuario no esta registrado"),
+            res.send('<h1>Error de inicio de sesión</h1><p>Nombre de usuario o contraseña incorrectos</p><script>alert("El usuario o contraseña no son correcto");setTimeout(function() {window.location.href = "/";}, 2000);</script>');
+        });
          
        } catch (error) {
         console.log(error);
@@ -92,9 +105,17 @@ app.post("/escribirMensaje",(req,res)=>{
     console.log(req.body);
     const mensaje = req.body.mensaje;       
         try {
+
+            if(isEmpty(titulo)||isEmpty(mensaje)){
+
+                res.send('<script>alert("Nisngun campo puede estar vacio");setTimeout(function() {window.location.href = "/escribirMensaje";}, 1000);</script>');
+                return;
+
+            }else{
         conexion.query("INSERT INTO mensaje(tituloMensaje,textoMensaje) VALUES ('"+titulo+"','"+mensaje+"')");
          console.log("entro");
         res.redirect('/mostrarMensajes');
+            }
        } catch (error) {
         console.log(error);
        }
