@@ -15,7 +15,7 @@ app.set("view engine","handlebars");
 app.use(body.urlencoded({extended:true}))
 
 var conexion= mysql.createConnection({
-    host : '127.0.0.1',
+    host : 'localhost:3306',
     database : 'oinker',
     user : 'root',
     password : '',
@@ -51,10 +51,9 @@ app.get("/escribirMensaje",(req,res)=>{
     res.render("escribirMensaje");
 });
 
-app.post("/formu",(req,res)=>{
+app.post("/",(req,res)=>{
 
         const nombre = req.body.nombre;
-<<<<<<< Updated upstream
         console.log(req.body);
         const correo = req.body.correo;
         const nick = req.body.nick;
