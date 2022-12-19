@@ -1,0 +1,21 @@
+drop database oinker;
+create database oinker;
+use oinker;
+
+create table usuario (
+id_usuario int not null auto_increment,
+nombreUsuario varchar (128) not null,
+correoUsuario varchar (128) not null,
+nickUsuario varchar (128) not null,
+passwordUsuario varchar (128) not null,
+PRIMARY KEY (id_usuario)
+);
+
+create table mensaje (
+id_mensaje int not null auto_increment,
+tituloMensaje varchar (128) not null,
+textoMensaje varchar (128) not null,
+PRIMARY KEY (id_mensaje)
+);
+
+insert into usuario (nombreUsuario, correoUsuario, nickUsuario, passwordUsuario)  values ('Miriam', 'adminMiriam@oinker.com', 'Miri', '1234');
